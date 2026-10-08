@@ -1,5 +1,9 @@
 #pragma once
 
+#include <vector>
+#include <unordered_map>
+#include <string>
+
 namespace argparser {
     struct Args {
         std::unordered_map<std::string, std::string> singleDashArgs;
