@@ -22,13 +22,17 @@ namespace argparser {
                             doubleDashArg += argv[i][c];
                         }
                         args.doubleDashArgs.push_back(doubleDashArg);
-                    } else { // -arg
+                    } else { // -a (single dash, single char, key value args)
                         std::string singleDashArgKey = "";
-                        for(int c = 1; argv[i][c] != 0; c++){
-                            singleDashArgKey += argv[i][c];
-                        }
+                        singleDashArgKey += argv[i][1];
 
-                        if(i < (argc - 1)){ // argv has another arg to use as value
+                        if(std::string(argv[i]).length() > 2){ // consume rest of arg as value
+                            std::string singleDashArgValue = "";
+                            for(int c = 2; argv[i][c] != 0; c++){
+                                singleDashArgValue += argv[i][c];
+                            }
+                            args.singleDashArgs[singleDashArgKey] = singleDashArgValue;
+                        } else if(i < (argc - 1)){ // argv has another arg to use as value
                             i++;
                             std::string singleDashArgValue = "";
                             for(int c = 0; argv[i][c] != 0; c++){
