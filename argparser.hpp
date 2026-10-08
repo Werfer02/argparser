@@ -3,12 +3,25 @@
 #include <vector>
 #include <unordered_map>
 #include <string>
+#include <algorithm>
 
 namespace argparser {
     struct Args {
         std::unordered_map<std::string, std::string> singleDashArgs;
         std::vector<std::string> doubleDashArgs;
         std::vector<std::string> noDashArgs;
+
+        bool hasSingleDashArg(std::string arg){
+            return singleDashArgs.find(arg) != singleDashArgs.end();
+        }        
+        
+        bool hasDoubleDashArg(std::string arg){
+            return std::find(doubleDashArgs.begin(), doubleDashArgs.end(), arg) != doubleDashArgs.end();
+        }
+
+        bool hasNoDashArg(std::string arg){
+            return std::find(noDashArgs.begin(), noDashArgs.end(), arg) != noDashArgs.end();
+        }
     };
 
     Args parseArgv(int argc, char** argv){
