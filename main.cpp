@@ -13,12 +13,12 @@ int main(int argc, char** argv){
         std::cout << entry.first << ": " << entry.second << "\n";
     }
 
-    std::cout << "double dash args: \n";
+    std::cout << "\ndouble dash args: \n";
     for(auto s : args.doubleDashArgs){
         std::cout << s << "\n";
     }
 
-    std::cout << "no dash args: \n";
+    std::cout << "\nno dash args: \n";
     for(auto s : args.noDashArgs){
         std::cout << s << "\n";
     }
